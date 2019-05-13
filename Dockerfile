@@ -1,4 +1,4 @@
-FROM mysql:5.7
+FROM mysql:8.0
 
 RUN apt-get update && \
     apt-get install -y locales && \
@@ -15,3 +15,8 @@ RUN { \
       echo '[client]'; \
       echo 'default-character-set=utf8mb4'; \
     } > /etc/mysql/conf.d/charset.cnf
+
+RUN { \
+      echo '[mysqld]'; \
+      echo 'default_authentication_plugin=mysql_native_password'; \
+    } > /etc/mysql/conf.d/security.cnf
