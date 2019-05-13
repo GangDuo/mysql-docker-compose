@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    build: .
+    container_name: master-db-server
+    restart: always
+    ports:
+      - "13306:3306"
+    volumes:
+      - ./.data/db:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./MySQLTuner-perl:/MySQLTuner
+    environment:
+      TZ: "Asia/Tokyo"
+      MYSQL_ROOT_PASSWORD: ****
+
+  adminer:
+    image: adminer
+    container_name: db-management-tool
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - db

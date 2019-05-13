@@ -1,0 +1,3 @@
+[submodule "MySQLTuner-perl"]
+	path = MySQLTuner-perl
+	url = https://github.com/major/MySQLTuner-perl.git
